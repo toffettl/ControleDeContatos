@@ -1,10 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using ControleDeContatos.Data;
+using ControleDeContatos.Repositorio;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ControleDeContatosContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ControleDeContatosContext") ?? throw new InvalidOperationException("Connection string 'ControleDeContatosContext' not found.")));
-
+builder.Services.AddScoped<IContatosRepositorio, ContatosRepositorio>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
