@@ -42,7 +42,7 @@ namespace ControleDeContatos.Repositorio
             _context.SaveChanges();
 
             return contatoDB;
-        }
+        } 
 
         public bool Apagar(int id)
         {
